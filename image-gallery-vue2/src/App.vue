@@ -4,12 +4,18 @@
   </div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue';
+export default Vue.extend({});
+</script>
+
 <style>
-#app {
-  font-family: Montserrat, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+body { 
+	font-family: 'Montserrat', Arial, sans-serif;
+	background:#edf3f4;
+	margin:0;
+	padding:20px;
 }
+
+
 </style>

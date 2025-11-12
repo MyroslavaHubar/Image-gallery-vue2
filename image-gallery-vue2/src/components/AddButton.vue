@@ -28,6 +28,7 @@ export default class AddButton extends Vue {
 	box-shadow: 0px 2px 10px #C2CDD8;
   width: 100%;
   max-width: 190px;
+	max-height: 64px;
   padding: 40px 20px;
   background: #ffffff;
   border-radius: 3px;

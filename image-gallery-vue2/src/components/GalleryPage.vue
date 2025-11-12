@@ -57,29 +57,56 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.gallery-page {
+  height: 670px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  padding: 10px;
+}
+
+
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-auto-flow: column; 
+  grid-auto-rows: max-content;
   gap: 10px;
-  position: relative;
+  height: 100%;
+  align-items: start;
 }
+
 .gallery-img {
-  width: 100%;
+  width: auto;
   height: auto;
+  max-height: 100%;
   display: block;
-  border-radius: 4px;
+  border-radius: 6px;
 }
+
 .add-button-top {
-  grid-column: 1 / -1; 
   display: flex;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
 
 .add-button-wrapper {
-  grid-column: 1 / -1; 
-  display: flex;
-  justify-content: flex-end; 
-  margin-top: 10px;
+  position: fixed;
+  bottom: 35px;
+  right: 60px;
+  z-index: 10;
+}
+.gallery-page::-webkit-scrollbar {
+  height: 8px;
+}
+.gallery-page::-webkit-scrollbar-track {
+  background: #d1dae3;
+  border-radius: 4px;
+}
+.gallery-page::-webkit-scrollbar-thumb {
+  background-color: #21b8c6;
+  border-radius: 4px;
+}
+.gallery-page::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
 }
 </style>

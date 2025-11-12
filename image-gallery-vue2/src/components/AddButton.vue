@@ -25,18 +25,13 @@ export default class AddButton extends Vue {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+	box-shadow: 0px 2px 10px #C2CDD8;
   width: 100%;
-  max-width: 220px;
+  max-width: 190px;
   padding: 40px 20px;
-  margin-bottom: 10px;
-  background: #eef6f8;
-  border: 2px dashed #21b8c6;
-  border-radius: 8px;
+  background: #ffffff;
+  border-radius: 3px;
   text-align: center;
-  font-size: 18px;
-  color: #21b8c6;
-  font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
   break-inside: avoid;
@@ -50,8 +45,10 @@ export default class AddButton extends Vue {
 
 .title-button {
   margin: 0;
-  font-size: 16px;
-  color: #21b8c6;
+  font-size: 14px;
+	color: #a0b0ba;
+	font-weight: 700;
+	width: 75px;
 }
 
 </style>

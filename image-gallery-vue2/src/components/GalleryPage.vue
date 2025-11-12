@@ -27,6 +27,11 @@ import { GalleryItem } from '@/types/gallery';
 export default Vue.extend({
   name: 'GalleryPage',
   components: { AddButton },
+	  data() {
+    return {
+      nextImageIndex: 0, 
+    };
+  },
   computed: {
     ...mapGetters('images', ['items']),
     images(): GalleryItem[] {
@@ -43,8 +48,9 @@ export default Vue.extend({
         '/images/image4.png',
         '/images/image5.png',
       ];
-      const random = sampleImages[Math.floor(Math.random() * sampleImages.length)];
-      this.add({ src: random });
+        const src = sampleImages[this.nextImageIndex];
+      	this.add({ src });
+      	this.nextImageIndex = (this.nextImageIndex + 1) % sampleImages.length;
     },
   },
 });
@@ -59,21 +65,21 @@ export default Vue.extend({
 }
 .gallery-img {
   width: 100%;
-  height: auto; /* зберігаємо пропорції */
+  height: auto;
   display: block;
   border-radius: 4px;
 }
 .add-button-top {
-  grid-column: 1 / -1; /* кнопка займає весь рядок зверху */
+  grid-column: 1 / -1; 
   display: flex;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
 
 .add-button-wrapper {
-  grid-column: 1 / -1; /* кнопка внизу займає весь рядок */
+  grid-column: 1 / -1; 
   display: flex;
-  justify-content: flex-end; /* вправо */
+  justify-content: flex-end; 
   margin-top: 10px;
 }
 </style>

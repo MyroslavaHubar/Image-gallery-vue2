@@ -34,8 +34,9 @@ export default Vue.extend({
   },
   computed: {
     ...mapGetters('images', ['items']),
+
     images(): GalleryItem[] {
-      return this.items;
+      return this.$store.getters['images/items'];
     },
   },
   methods: {
@@ -48,9 +49,9 @@ export default Vue.extend({
         '/images/image4.png',
         '/images/image5.png',
       ];
-        const src = sampleImages[this.nextImageIndex];
-      	this.add({ src });
-      	this.nextImageIndex = (this.nextImageIndex + 1) % sampleImages.length;
+      const src = sampleImages[this.nextImageIndex];
+      this.$store.commit('images/add', { src });
+      this.nextImageIndex = (this.nextImageIndex + 1) % sampleImages.length;
     },
   },
 });

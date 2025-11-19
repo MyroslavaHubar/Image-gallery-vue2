@@ -18,19 +18,14 @@ export default class AddButton extends Vue {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped lang="scss">
 .button-container {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-	box-shadow: 0px 2px 10px #C2CDD8;
+@include add-button-flex;
+@include add-button-max-size;
   width: 100%;
-  max-width: 190px;
-	max-height: 64px;
-  padding: 40px 20px;
-  background: #ffffff;
+  padding: $button-padding;
+  background: $background-white;
   border-radius: 3px;
   text-align: center;
   cursor: pointer;

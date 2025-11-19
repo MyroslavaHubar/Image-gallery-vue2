@@ -1,7 +1,7 @@
 <template>
   <div class="gallery-page">
     <div class="gallery">
-        <div v-if="images.length === 0" class="add-button-top">
+        <div v-if="images && images.length === 0" class="add-button-top">
         <AddButton @add="addImage" />
       </div>
       <img
@@ -11,7 +11,7 @@
         class="gallery-img"
       />
 
-			<div v-if="images.length > 0" class="add-button-wrapper">
+			<div v-if="images && images.length > 0" class="add-button-wrapper">
         <AddButton @add="addImage" />
       </div>
     </div>
@@ -19,51 +19,44 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import { mapGetters, mapMutations } from 'vuex';
+import { Component, Vue } from 'vue-property-decorator';
+import { namespace } from 'vuex-class';
 import AddButton from '@/components/AddButton.vue';
-import { GalleryItem } from '@/types/gallery';
+import { GalleryItem } from '@/interfaces/galleryItem.interface';
 
-export default Vue.extend({
+const imagesModule = namespace('images');
+
+@Component({
   name: 'GalleryPage',
   components: { AddButton },
-	  data() {
-    return {
-      nextImageIndex: 0, 
-    };
-  },
-  computed: {
-    ...mapGetters('images', ['items']),
+})
+export default class GalleryPage extends Vue {
+  nextImageIndex = 0;
 
-    images(): GalleryItem[] {
-      return this.$store.getters['images/items'];
-    },
-  },
-  methods: {
-    ...mapMutations('images', ['add']),
-    addImage(): void {
-      const sampleImages: string[] = [
-        '/images/image1.png',
-        '/images/image2.png',
-        '/images/image3.png',
-        '/images/image4.png',
-        '/images/image5.png',
-      ];
-      const src = sampleImages[this.nextImageIndex];
-      this.$store.commit('images/add', { src });
-      this.nextImageIndex = (this.nextImageIndex + 1) % sampleImages.length;
-    },
-  },
-});
+  @imagesModule.Getter('items')
+  images!: GalleryItem[];
+
+  @imagesModule.Mutation('add')
+  addImageMutation!: (payload: { src: string }) => void;
+
+  addImage(): void {
+    const sampleImages: string[] = [
+      '/images/image1.png',
+      '/images/image2.png',
+      '/images/image3.png',
+      '/images/image4.png',
+      '/images/image5.png',
+    ];
+    const src = sampleImages[this.nextImageIndex];
+    this.addImageMutation({ src });
+    this.nextImageIndex = (this.nextImageIndex + 1) % sampleImages.length;
+  }
+}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .gallery-page {
-  height: 670px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  position: relative;
-  padding: 10px;
+	@include gallery-page;
 }
 
 

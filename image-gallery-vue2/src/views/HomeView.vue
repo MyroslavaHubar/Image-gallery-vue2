@@ -10,33 +10,27 @@
 </template>
 
 <script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 import GalleryPage from '@/components/GalleryPage.vue';
 
-export default {
+@Component({
   name: 'HomeView',
-	components: {GalleryPage},
-};
-
+  components: { GalleryPage },
+})
+export default class HomeView extends Vue {
+}
 </script>
 
 <style scoped lang="scss">
-.home {
-  padding-bottom: 30px;
-}
-
 .hero {
-	margin-left: 20px;
-	margin-top: 10px;
+	@include header-margins;
 }
 
 .title {
-	font-size: 24px;
-	font-weight: 700;
-	text-align: left;
-	color: #8499a7;
+	@include title;
 
 	span {
-		color: #21b8c6;
+		color: $color-green;
 	}
 }
 </style>

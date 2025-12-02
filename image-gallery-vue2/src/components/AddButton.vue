@@ -43,7 +43,7 @@ export default class AddButton extends Vue {
   margin: 0;
   font-size: 14px;
 	color: #a0b0ba;
-	font-weight: 700;
+	font-weight: $font-bold;
 	width: 75px;
 }
 

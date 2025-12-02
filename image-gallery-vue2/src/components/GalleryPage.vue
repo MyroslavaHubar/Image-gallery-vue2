@@ -93,14 +93,14 @@ export default class GalleryPage extends Vue {
   height: 8px;
 }
 .gallery-page::-webkit-scrollbar-track {
-  background: #d1dae3;
+  background: $scrollbar-color;
   border-radius: 4px;
 }
 .gallery-page::-webkit-scrollbar-thumb {
-  background-color: #21b8c6;
+  background-color: $scrollbar-thumb-color;
   border-radius: 4px;
 }
 .gallery-page::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
+  background-color: $scrollbar-thumb-color-hover;
 }
 </style>

@@ -1,0 +1,39 @@
+@mixin add-button-flex {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $button-box-shadow;
+}
+
+@mixin add-button-wrapper {
+  position: fixed;
+  bottom: 35px;
+  right: 60px;
+  z-index: 10;
+}
+
+@mixin add-button-max-size {
+  max-width: $button-max-width;
+  max-height: $button-max-height;
+}
+
+@mixin header-margins {
+  margin-left: $header-left-margin;
+  margin-top: $header-top-margin;
+}
+
+@mixin title {
+  font-size: $title-font-size;
+  font-weight: $font-bold;
+  color: $grey-color;
+  text-align: left;
+}
+
+@mixin gallery-page {
+  height: $gallery-page-height;
+  padding: $gallery-page-padding;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+}
